@@ -19,7 +19,7 @@ router.get('/new', (req, res) => {
   });
 });
 
-// Page for results of single quiz
+// Page for results of all quizzes taken
 router.get('/results/:url',  (req, res) => {
   const userId = req.session.userId;
   const templateVars = {};
