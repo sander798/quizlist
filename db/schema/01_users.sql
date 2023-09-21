@@ -31,8 +31,8 @@ CREATE TABLE questions (
 
 CREATE TABLE answers (
     id SERIAL PRIMARY KEY NOT NULL,
-    text TEXT NOT NULL,
-    is_correct BOOLEAN NOT NULL,
+    text TEXT,
+    is_correct BOOLEAN,
     question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE
 );
 
