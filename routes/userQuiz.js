@@ -28,9 +28,9 @@ router.get('/results/:url', (req, res) => {
     .then(([user, results]) => {
       templateVars.userName = !user ? '' : user.name;
       templateVars.results = results;
-      return results[0].quiz_id; // You might need to adjust this based on your data structure
+      return results[0].quiz_id;
     })
-    .then((quizId) => getQuizDetails(quizId)) // Use getQuizDetails
+    .then((quizId) => getQuizDetails(quizId))
     .then((quiz) => {
       templateVars.quiz = quiz;
       res.render('quiz_stats', templateVars);
