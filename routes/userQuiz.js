@@ -1,6 +1,5 @@
 const express = require('express');
-const router  = express.Router();
-
+const router = express.Router();
 const { getUserById } = require('../db/queries/users');
 const { getQuizResults } = require('../db/queries/get_quiz_stats');
 const { getQuiz } = require('../db/queries/get_quizzes');
@@ -13,48 +12,42 @@ router.get('/new', (req, res) => {
     return res.redirect('/quizapp/login');
   }
 
-  getUserById(userId).then(user => {
-    const templateVars = {userName: user.name};
+  getUserById(userId).then((user) => {
+    const templateVars = { userName: user.name };
     res.render('quiz_form', templateVars);
   });
 });
 
 // Page for results of all quizzes taken
-router.get('/results/:url',  (req, res) => {
+router.get('/results/:url', (req, res) => {
   const userId = req.session.userId;
   const templateVars = {};
   const url = req.params.url;
 
   templateVars.url = url;
 
-  Promise.all([
-    getUserById(userId),
-    getQuizResults(url)
-  ])
+  Promise.all([getUserById(userId), getQuizResults(url)])
     .then(([user, results]) => {
-      templateVars.userName = (!user ? '' : user.name);
+      templateVars.userName = !user ? '' : user.name;
       templateVars.results = results;
       return results.quizId;
     })
-    .then(quizId => getQuiz({id: quizId}))
-    .then(quiz => {
+    .then((quizId) => getQuiz({ id: quizId }))
+    .then((quiz) => {
       templateVars.quiz = quiz;
       res.render('quiz_stats', templateVars);
     });
 });
 
 // Page to take a quiz
-router.get('/:url',  (req, res) => {
+router.get('/:url', (req, res) => {
   const userId = req.session.userId;
 
-  Promise.all([
-    getUserById(userId),
-    getQuiz({ url: req.params.url })
-  ])
+  Promise.all([getUserById(userId), getQuiz({ url: req.params.url })])
     .then(([user, quiz]) => {
       const templateVars = {
-        userName: (!user ? '' : user.name),
-        quiz
+        userName: !user ? '' : user.name,
+        quiz,
       };
       res.render('quiz', templateVars);
     });
