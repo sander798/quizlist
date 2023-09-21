@@ -16,7 +16,6 @@ const loginRoutes = require('./login');
 
 // Mount all resource routes
 router.use('/quiz', quizRoutes);
-router.use('/account', accountRoutes);
 router.use('/attempt', attemptRoutes);
 router.use('/login', loginRoutes);
 
