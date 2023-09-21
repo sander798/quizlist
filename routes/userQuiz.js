@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getUserById } = require('../db/queries/users');
-
+const { getUserById, getQuizResult, getQuizDetails, getQuiz } = require('../db/queries/users'); // Updated imports
 
 // Create new page
 router.get('/new', (req, res) => {
@@ -25,13 +24,13 @@ router.get('/results/:url', (req, res) => {
 
   templateVars.url = url;
 
-  Promise.all([getUserById(userId), getQuizResults(url)])
+  Promise.all([getUserById(userId), getQuizResult(url, userId)]) // Updated function name
     .then(([user, results]) => {
       templateVars.userName = !user ? '' : user.name;
       templateVars.results = results;
-      return results.quizId;
+      return results[0].quiz_id; // You might need to adjust this based on your data structure
     })
-    .then((quizId) => getQuiz({ id: quizId }))
+    .then((quizId) => getQuizDetails(quizId)) // Use getQuizDetails
     .then((quiz) => {
       templateVars.quiz = quiz;
       res.render('quiz_stats', templateVars);
