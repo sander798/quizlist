@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Quizlist - Javascript Quiz</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <%- include("partials/_header") %>
+  
+  <main>
+    <form action="/quiz" method="POST">
+      <section id="new-quiz-header">
+        <label for="new-quiz-title">Quiz title:</label>
+        <input class="new-quiz-title-input" type="text" name="new-quiz-title"/>
+      </section>
+  
+      <section class="new-question">
+        <div class="new-question-info">
+          <textarea class="new-question-desc">What is your question?</textarea>
+        </div>
+        <textarea class="new-question-answer">What is the answer?</textarea>
+      </section>
+      
+      <button type="button" id="add-question-button">Add Question</button>
+      <button type="submit">Create Quiz</button>
+    </form>
+  </main>
+</body>
+
+</html>

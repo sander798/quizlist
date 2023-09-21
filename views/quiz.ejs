@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Quizlist Home Page</title>
+  <title>Quizlist - Javascript Quiz</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -21,13 +21,17 @@
   <%- include("partials/_header") %>
   
   <main>
-    <section>
-      <div class="quiz-info-bar">
-        <span class="quiz-title">Javascript Quiz</span>
-        <span class="quiz-author">by sander798</span>
-      </div>
-      <p class="quiz-desc">Lorem ipsum</p>
-    </section>
+    <form action="/attempt" method="POST">
+      <span id="quiz-title">Javascript Quiz</span>
+      <section>
+        <div class="question-info">
+          <span class="question-title">Question 1</span>
+          <p class="question-desc">Lorem ipsum</p>
+        </div>
+        <textarea class="user-answer"></textarea>
+      </section>
+      <button type="submit">Submit Answers</button>
+    </form>
   </main>
 </body>
 

@@ -21,12 +21,20 @@
   <%- include("partials/_header") %>
   
   <main>
+    <div class="quiz-banner">
+      <span id="result-quiz-title">Javascript Quiz Results</span>
+      <span id="result-total">1 / 2</span>
+    </div>
+  
     <section>
-      <div class="quiz-info-bar">
-        <span class="quiz-title">Javascript Quiz</span>
-        <span class="quiz-author">by sander798</span>
+      <div class="answer-info">
+        <div class="answer-header">
+          <span class="question-title">Question 1</span>
+          <span class="answer-result">Correct!</span>
+        </div>
+        <p class="question-desc">Lorem ipsum</p>
       </div>
-      <p class="quiz-desc">Lorem ipsum</p>
+      <textarea class="user-answer"></textarea>
     </section>
   </main>
 </body>
