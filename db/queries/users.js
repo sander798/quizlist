@@ -49,4 +49,17 @@ const addUser = function(user) {
     });
 };
 
-module.exports = { getQuizzes, addQuiz, addUser, getQuiz };
+
+// Get a user by their ID.
+const getUserById = (userId) => {
+  return db.query('SELECT * FROM users WHERE id = $1', [userId])
+    .then((data) => {
+      return data.rows[0]; // Return the first user found (or null if not found).
+    })
+    .catch((error) => {
+      console.error('Error retrieving user by ID:', error);
+      return null;
+    });
+};
+
+module.exports = { getQuizzes, addQuiz, addUser, getQuiz, getUserById };
