@@ -11,7 +11,6 @@ const { getUserById } = require('../db/queries/users');
 
 // Separated Routes
 const quizRoutes = require('./users_quiz');
-const accountRoutes = require('./users_account');
 const attemptRoutes = require('./users_attempt');
 const loginRoutes = require('./users_login');
 
