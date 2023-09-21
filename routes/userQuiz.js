@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const { getUserById } = require('../db/queries/users');
+
 
 // Create new page
 router.get('/new', (req, res) => {
