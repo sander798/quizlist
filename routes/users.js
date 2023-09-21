@@ -11,8 +11,8 @@ const { getUserById } = require('../db/queries/users');
 
 // Separated Routes
 const quizRoutes = require('./users_quiz');
-const attemptRoutes = require('./users_attempt');
-const loginRoutes = require('./users_login');
+const attemptRoutes = require('./attempt');
+const loginRoutes = require('./login');
 
 // Mount all resource routes
 router.use('/quiz', quizRoutes);
