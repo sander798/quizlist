@@ -17,9 +17,9 @@ router.get('/:url', (req, res) => {
         attempt,
         userName: !user ? '' : user.name,
       };
-      return attempt[0].quiz_id; // You might need to adjust this based on your data structure
+      return attempt[0].quiz_id;
     })
-    .then((quizId) => getQuizDetails(quizId)) // Use getQuizDetails
+    .then((quizId) => getQuizDetails(quizId))
     .then((quiz) => {
       templateVars.quiz = quiz;
       res.render('quiz_attempt', templateVars);
