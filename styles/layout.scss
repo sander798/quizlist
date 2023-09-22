@@ -1,5 +1,13 @@
 // See: https://sass-lang.com/
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body,
 html {
   margin: 0;

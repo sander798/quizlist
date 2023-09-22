@@ -1,4 +1,6 @@
 <header>
+  <link rel="stylesheet" href="/styles/header.css" />
+  
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <a class="navbar-brand" href="/">Quizlist</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -11,8 +13,8 @@
       <% } else { %>
         <form class="form-inline" action="/login" method="GET">
           <button type="submit" class="btn btn-primary">Log in</button>
-          <input class="form-control" type="text" name="username"/>
-          <input class="form-control" type="text" name="password"/>
+          <input class="form-control" type="text" name="username">username</input>
+          <input class="form-control" type="text" name="password">password</input>
         </form>
       <% } %>
     </div>

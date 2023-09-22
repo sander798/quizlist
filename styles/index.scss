@@ -1,0 +1,22 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-listing {
+  display: flex;
+  justify-content: space-between;
+  background-color: #F88379;
+  width: 60vw;
+  margin: 1.5em; 
+  padding: 1em;
+  border-radius: 25px;
+}
+
+.quiz-info-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
