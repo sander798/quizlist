@@ -15,19 +15,16 @@ const quizRoutes = require('./users_quiz')(DataHelpers);
 const attemptRoutes = require('./attempt')(DataHelpers);
 const loginRoutes = require('./login')(DataHelpers);
 
-// Mount all resource routes
-router.use('/quiz', quizRoutes);
-router.use('/attempt', attemptRoutes);
-router.use('/login', loginRoutes);
+module.exports = function(DataHelpers) {
+  // Home page
+  router.get('/', (req, res) => {
+    const userId = req.session.userId;
 
-// Home page
-router.get('/', (req, res) => {
-  const userId = req.session.userId;
-
-  getUserById(userId).then((user) => {
-    const templateVars = { userName: !user ? '' : user.name };
-    res.render('index', templateVars);
+    getUserById(userId).then((user) => {
+      const templateVars = { userName: !user ? '' : user.name };
+      res.render('index', templateVars);
+    });
   });
-});
 
-module.exports = router;
+  return router;
+};
