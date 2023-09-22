@@ -8,6 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const { getUserById } = require('../db/queries/users');
+const DataHelpers = require('./attempt'); // Added path to DataHelpers module
 
 // Separated Routes
 const quizRoutes = require('./users_quiz');
