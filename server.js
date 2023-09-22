@@ -10,7 +10,7 @@ const { getUserById, getQuizResult, getQuizDetails, getQuiz } = require('./db/qu
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-const DataHelpers = require('./attempt');
+const DataHelpers = require('./routes/attempt');
 
 app.set('view engine', 'ejs');
 
