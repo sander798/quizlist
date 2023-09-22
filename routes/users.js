@@ -8,22 +8,29 @@
 const express = require('express');
 const router = express.Router();
 const { getUserById } = require('../db/queries/users');
-const DataHelpers = require('./attempt'); // Added path to DataHelpers module
+const DataHelpers = require('./attempt');
 
 // Separated Routes
 const quizRoutes = require('./users_quiz')(DataHelpers);
 const attemptRoutes = require('./attempt')(DataHelpers);
 const loginRoutes = require('./login')(DataHelpers);
 
-module.exports = function(DataHelpers) {
+module.exports = function (DataHelpers) {
   // Home page
   router.get('/', (req, res) => {
     const userId = req.session.userId;
+    const templateVars = {};
 
-    getUserById(userId).then((user) => {
-      const templateVars = { userName: !user ? '' : user.name };
-      res.render('index', templateVars);
-    });
+    getUserById(userId)
+      .then((user) => {
+        templateVars.userName = !user ? '' : user.name;
+        res.render('index', templateVars);
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle errors here
+        res.status(500).send('Internal Server Error');
+      });
   });
 
   return router;
