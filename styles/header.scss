@@ -1,7 +1,8 @@
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: #4056A1;
+  align-items: center;
+  background-color: #4D6FE3;
   font-size: 24px;
 }
 
@@ -13,6 +14,18 @@ nav {
 
 #navbarNavAltMarkup {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
+  margin: 0.7em;
 }
+
+#new-quiz-link {
+  margin-right: 1em;
+  color: white;
+  background-color: #4056A1;
+  padding: 0.2em;
+  border-width: 2px;
+  border-color: black;
+}
+
+
