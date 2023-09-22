@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { getUserById, getQuizResult, getQuizDetails, getQuiz } = require('../db/queries/users');
+const DataHelpers = require('./attempt');
 
 module.exports = function (DataHelpers) {
   // Create new quiz page
