@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const { getUserById, getQuizResult, getQuizDetails, getQuiz } = require('./db/queries/users'); // Import necessary queries
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -30,7 +31,7 @@ app.use(express.static('public'));
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
+const usersRoutes = require('./routes/users')(DataHelpers); // Call with DataHelpers parameter
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -45,9 +46,21 @@ app.use('/users', usersRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  const userId = req.session.userId;
+
+  getUserById(userId)
+    .then((user) => {
+      const templateVars = { userName: !user ? '' : user.name };
+      res.render('index', templateVars);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle errors here, like sending an error response
+      res.status(500).send('Internal Server Error');
+    });
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
