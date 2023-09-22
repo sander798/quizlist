@@ -48,18 +48,7 @@ app.use('/users', usersRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  const userId = req.session.userId;
-
-  getUserById(userId)
-    .then((user) => {
-      const templateVars = { userName: !user ? '' : user.name };
-      res.render('index', templateVars);
-    })
-    .catch((error) => {
-      console.error(error);
-      // Handle errors here, like sending an error response
-      res.status(500).send('Internal Server Error');
-    });
+  res.render('index');
 });
 
 app.listen(PORT, () => {
