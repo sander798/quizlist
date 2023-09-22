@@ -11,11 +11,18 @@ module.exports = function (DataHelpers) {
     }
 
     // Use the getUserById function from DataHelpers
-    DataHelpers.getUserById(userId).then((user) => {
-      const templateVars = { userName: user.name };
-      res.render('quiz_form', templateVars);
-    });
+    DataHelpers.getUserById(userId)
+      .then((user) => {
+        const templateVars = { userName: user.name };
+        res.render('quiz_form', templateVars);
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle errors here
+        res.status(500).send('Internal Server Error');
+      });
   });
 
   return router;
 };
+
