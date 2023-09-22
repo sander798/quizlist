@@ -1,7 +1,7 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
-module.exports = function(DataHelpers) {
+module.exports = function (DataHelpers) {
   // Login page
   router.get('/', (req, res) => {
     const userId = req.session.userId;
