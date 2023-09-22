@@ -1,3 +1,6 @@
+const express = require('express');
+const router = express.Router();
+
 // New quiz creation page
 router.get('/new', (req, res) => {
   const userId = req.session.userId;
