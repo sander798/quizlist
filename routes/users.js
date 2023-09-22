@@ -11,9 +11,9 @@ const { getUserById } = require('../db/queries/users');
 const DataHelpers = require('./attempt'); // Added path to DataHelpers module
 
 // Separated Routes
-const quizRoutes = require('./users_quiz');
+const quizRoutes = require('./users_quiz')(DataHelpers);
 const attemptRoutes = require('./attempt')(DataHelpers);
-const loginRoutes = require('./login');
+const loginRoutes = require('./login')(DataHelpers);
 
 // Mount all resource routes
 router.use('/quiz', quizRoutes);
