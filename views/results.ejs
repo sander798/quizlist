@@ -24,22 +24,22 @@
   <main>
     <div id="quiz-banner">
       <span id="result-user"><%= userName %></span>
-      <span id="result-quiz-title"><%= quiz.title %> Results</span>
-      <span id="result-date">1 / 1 / 23</span>
-      <span id="result-total">1 / 2</span>
+      <span id="result-quiz-title"><%= quiz[0].quiz_title %> Results</span>
+      <span id="result-date"><%= quiz[0].result_date %></span>
+      <span id="result-total"><%= quiz[0].result_score %> / 1</span>
     </div>
   
     <div class="result-question-container">
-    <% for (const question of quiz.questions) { %>
+    <% for (let i = 0; i < quiz.length - 1; i++) { %>
       <section class="result-question">
         <div class="answer-info">
           <div class="answer-header">
-            <span class="question-title"><%= question.title %></span> 
+            <span class="question-title"><%= quiz[i].quiz_title %></span> 
             <span class="answer-result">Correct!</span>
           </div>
-          <p class="question-desc"><%= question.description %></p>
+          <p class="question-desc"><%= quiz[i].question_text %></p>
         </div>
-        <textarea class="user-answer"><%= question.userAnswer %></textarea>
+        <textarea class="user-answer"><%= quiz[i].user_response %></textarea>
       </section>
     <% } %>
     </div>

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getUserById, getQuizResult, getQuizDetails, getQuiz, addQuizResult } = require('../db/queries/users');
+const { getUserById, getQuizResult, getQuizDetails, getQuiz, addQuizResult, getAnswersToQuestions } = require('../db/queries/users');
 const DataHelpers = require('./attempt');
 
 module.exports = function (DataHelpers) {
@@ -39,7 +39,7 @@ module.exports = function (DataHelpers) {
         templateVars.results = results;
         return results[0].quiz_id;
       })
-      .then((quizId) => getQuizDetails(quizId))
+      .then((quizId) => getAnswersToQuestions(quizId))
       .then((quiz) => {
         templateVars.quiz = quiz;
         res.render('quiz_stats', templateVars);
@@ -53,7 +53,7 @@ module.exports = function (DataHelpers) {
 
   // Page to take a quiz
 router.get('/:url', (req, res) => {
-  const userId = 0;
+  const userId = 1;
   
   Promise.all([getUserById(userId), getQuizDetails(req.params.url)])
     .then(([user, quiz]) => {

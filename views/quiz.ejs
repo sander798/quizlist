@@ -22,13 +22,13 @@
   <%- include("partials/_header") %>
   
   <main>
-    <span id="quiz-title"><%= quiz.title %></span>
+    <span id="quiz-title"><%= quiz[0].quiz_title %></span>
 
-  <% for (const question of quiz.questions) { %>
+  <% for (let i = 0; i < quiz.length - 1; i++) { %>
     <section class="question">
       <div class="question-info">
-        <span class="question-title"><%= question.title %></span>
-        <p class="question-desc"><%= question.description %></p>
+        <span class="question-title"> Question <%= i + 1 %> </span>
+        <p class="question-desc"><%= quiz[i].question_text %></p>
       </div>
       <textarea class="user-answer"></textarea>
     </section>

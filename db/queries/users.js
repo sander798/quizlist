@@ -200,19 +200,19 @@ const getAnswersToQuestions = (questionId) => {
   const query = {
     text: `
       SELECT
+        q.id AS question_id,
         q.text AS question_text,
+        a.id AS answer_id,
         a.text AS answer_text,
-        a.is_correct AS is_correct_answer,
-        q.quiz_id AS quiz_id,
-        q.id AS question_id
+        a.is_correct
       FROM
         questions q
-      JOIN
+      LEFT JOIN
         answers a ON q.id = a.question_id
       WHERE
-        q.id = $1;
+        q.quiz_id = $1;
     `,
-    values: [questionId],
+    values: [quizId],
   };
 
   return db.query(query)

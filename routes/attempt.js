@@ -21,6 +21,7 @@ module.exports = function (DataHelpers) {
       .then((quizId) => db.getQuizDetails(quizId))
       .then((quiz) => {
         templateVars.quiz = quiz;
+        console.log(templateVars.attempt);
         res.render('results', templateVars);
       })
       .catch((error) => {
