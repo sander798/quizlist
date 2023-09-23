@@ -52,23 +52,41 @@ module.exports = function (DataHelpers) {
   });
 
   // Page to take a quiz
-  router.get('/:url', (req, res) => {
-    const userId = req.session.userId;
+router.get('/:url', (req, res) => {
+  const userId = req.session.userId;
 
-    Promise.all([getUserById(userId), getQuiz({ url: req.params.url })])
-      .then(([user, quiz]) => {
-        const templateVars = {
-          userName: !user ? '' : user.name,
-          quiz,
-        };
-        res.render('quiz', templateVars);
-      })
-      .catch((error) => {
-        console.error(error);
-        // Handle errors here
-        res.status(500).send('Internal Server Error');
-      });
-  });
+  Promise.all([DataHelpers.getUserById(userId), DataHelpers.getQuiz({ url: req.params.url })])
+    .then(([user, quiz]) => {
+      const templateVars = {
+        userName: !user ? '' : user.name,
+        quiz,
+      };
+      res.render('quiz', templateVars);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle errors here
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+// Fetch  list of available quizzes
+router.get('/quizzes', (req, res) => {
+  // Assuming you have a DataHelpers.getQuizzes() function
+  DataHelpers.getQuizzes()
+    .then((quizzes) => {
+      const templateVars = {
+        quizzes,
+      };
+      res.render('quiz_list', templateVars);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle errors here
+      res.status(500).send('Internal Server Error');
+    });
+});
+
 
   return router;
 };
