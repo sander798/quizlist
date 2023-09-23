@@ -23,22 +23,23 @@
   
   <main>
     <div id="quiz-banner">
-      <span id="result-user">sander798</span>
-      <span id="result-quiz-title">Javascript Quiz Results</span>
+      <span id="result-user"><%= userName %></span>
+      <span id="result-quiz-title"><%= quiz.title %> Results</span>
       <span id="result-date">1 / 1 / 23</span>
       <span id="result-total">1 / 2</span>
     </div>
   
     <div class="result-question-container">
+    <% for (const question of quiz.questions) { %>
       <section class="result-question">
         <div class="answer-info">
           <div class="answer-header">
-            <span class="question-title">Question 1</span>
+            <span class="question-title"><%= question.title %></span> 
             <span class="answer-result">Correct!</span>
           </div>
-          <p class="question-desc">Lorem ipsum</p>
+          <p class="question-desc"><%= question.description %></p>
         </div>
-        <textarea class="user-answer"></textarea>
+        <textarea class="user-answer"><%= question.userAnswer %></textarea>
       </section>
     </div>
     
