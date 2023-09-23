@@ -26,7 +26,7 @@ const getQuizByName = (quizName) => {
 
 // Add a new quiz to the database.
 const addQuiz = function(quiz) {
-  return pool.query(
+  return db.query(
     'INSERT INTO quizzes (title, description, is_public, user_id) VALUES ($1, $2, $3,$4) RETURNING *',
     [quiz.title, quiz.description, quiz.visibility, quiz.userId]
   )
@@ -41,7 +41,7 @@ const addQuiz = function(quiz) {
 
 // Add a new user to the database.
 const addUser = function(user) {
-  return pool.query(
+  return db.query(
     'INSERT INTO users (name, password, email ) VALUES ($1, $2, $3) RETURNING *',
     [user.name, user.password, user.email]
   )
@@ -56,7 +56,7 @@ const addUser = function(user) {
 
 // Add a new question to the database.
 const addQuestion = function(question) {
-  return pool.query(
+  return db.query(
     'INSERT INTO questions (text, quiz_id) VALUES ($1, $2) RETURNING *',
     [question.text, question.quiz_id]
   )
@@ -71,7 +71,7 @@ const addQuestion = function(question) {
 
 // Add an answer of the qestion to the database.
 const addAnswer = function(answer) {
-  return pool.query(
+  return db.query(
     'INSERT INTO answers (text, is_correct, question_id) VALUES ($1, $2, $3) RETURNING *',
     [answer.text, answer.is_correct, answer.question_id]
   )
@@ -88,7 +88,7 @@ const addAnswer = function(answer) {
 const addQuizResult = function(quizResult) {
   const { quizId, userId, date, score, questionResults } = quizResult;
 
-  return pool.query(
+  return db.query(
     'INSERT INTO results (quiz_id, user_id, date, score) VALUES ($1, $2, $3, $4) RETURNING id',
     [quizId, userId, date, score]
   )
@@ -98,7 +98,7 @@ const addQuizResult = function(quizResult) {
       // Insert question results into the 'result_questions' table
       const questionResultQueries = questionResults.map((questionResult) => {
         const { questionId, selectedAnswerId, userResponse } = questionResult;
-        return pool.query(
+        return db.query(
           'INSERT INTO result_questions (result_id, question_id, selected_answer_id, user_response) VALUES ($1, $2, $3, $4)',
           [resultId, questionId, selectedAnswerId, userResponse]
         );
@@ -130,7 +130,7 @@ const getUserById = (userId) => {
 
 // Get all the details of a quiz
 const getQuizDetails = (quizId) => {
-  return pool.query(`
+  return db.query(`
       SELECT 
           quizzes.id AS quiz_id,
           quizzes.title AS quiz_title,
@@ -159,7 +159,7 @@ const getQuizDetails = (quizId) => {
 };
 // Get quiz results
 const getQuizResult = (quizId, userId) => {
-  return pool.query(`
+  return db.query(`
     SELECT 
       quizzes.id AS quiz_id,
       quizzes.title AS quiz_title,

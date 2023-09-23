@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/new_quiz.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -28,14 +29,14 @@
       </div>
       <div>
         <label for="new-quiz-desc">Quiz description:</label>
-        <input id="new-quiz-desc-input" type="text" name="new-quiz-desc"/>
+        <textarea id="new-quiz-desc-input" name="new-quiz-desc"></textarea>
       </div>
     </section>
 
     <div class="question-container">
       <section class="new-question">
-        <textarea class="new-question-desc" value="What is your question?"></textarea>
-        <textarea class="new-question-answer" value="What is the answer?"></textarea>
+        <textarea class="new-question-desc">What is your question?</textarea>
+        <textarea class="new-question-answer">What is the answer?</textarea>
       </section>
     </div>
     
