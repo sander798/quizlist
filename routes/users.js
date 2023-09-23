@@ -33,7 +33,7 @@ module.exports = function (DataHelpers) {
         console.error(error);
         // Handle errors here
         res.status(500).send('Internal Server Error');
-      });
+      })
   });
   return router;
 };
