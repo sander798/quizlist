@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { getUserById } = require('../db/queries/users');
+const { getUserById, getQuizzes } = require('../db/queries/users');
 const DataHelpers = require('./attempt');
 
 // Separated Routes
@@ -19,9 +19,8 @@ module.exports = function (DataHelpers) {
   // Home page
   router.get('/', (req, res) => {
     const userId = req.session.userId;
-    const templateVars = {};
 
-    Promise.all([getUserById(userId), getQuizzes()
+    Promise.all([getUserById(userId), getQuizzes()])
       .then(([user, quizzes]) => {
         const templateVars = {
           userName: !user ? '' : user.name,
@@ -33,7 +32,8 @@ module.exports = function (DataHelpers) {
         console.error(error);
         // Handle errors here
         res.status(500).send('Internal Server Error');
-      })
+      });
   });
+
   return router;
 };
