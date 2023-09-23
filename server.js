@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
   Promise.all([getUserById(userId), getQuizzes()])
     .then(([user, quizzes]) => {
       const templateVars = {
-        userName: !user ? '' : user.name,
+        userName: "John Doe",
         quizzes,
       };
       res.render('index', templateVars);
