@@ -43,31 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Click event for the "Submit Answers" button on the quiz page (quiz.ejs)
   $('#submit-answers-button').click(function() {
     //Tally user score    
-    /*new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
       let score = 0;
       
-      $('.question').forEach((question) => {
-        const userAnswer = question.children('.user-answer').val();
+      for (let question of $('.question').toArray()){
+        const userAnswer = question.childNodes[3].value;
         const trueAnswer = "";//TODO: add db lookup...and figure out how to resolve asynchronously
         
         if (userAnswer == trueAnswer) {
           score++;
         }
-      });
+      }
       
       resolve(score);
     })
     .then((score) => {
-      const id = (window.location.href).replace("quiz", "").replaceAll("/", "");
-      console.log(id);
+      $.post(window.location.href, {score: score});
     });
-
-    
-    //Create new result entry
-    //$.post("/quiz/result")
-    
-    //{ quizId, userId, date, score, questionResults }
-    //db.addQuizResult()
-    window.location.href = '/results/:id';*/
   });
 });

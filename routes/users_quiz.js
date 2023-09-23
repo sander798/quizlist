@@ -49,7 +49,7 @@ module.exports = function (DataHelpers) {
       return data;
     })
     .then((data) => {
-      window.location.href = `/quiz/${data.id}`;
+      res.redirect(`/quiz/${data.id}`);
     })
     .catch((error) => {
       console.error(error);

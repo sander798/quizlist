@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getUserById, getQuizResult, getQuizDetails, getQuiz } = require('../db/queries/users');
+const { getUserById, getQuizResult, getQuizDetails, getQuiz, addQuizResult } = require('../db/queries/users');
 const DataHelpers = require('./attempt');
 
 module.exports = function (DataHelpers) {
@@ -102,6 +102,45 @@ router.get('/quizzes', (req, res) => {
       res.status(500).send('Internal Server Error');
     });
 });
+
+  router.post("/:id", (req, res) => { 
+    //console.log(req.params.id);
+    //console.log("score: " + req.body.score);
+    return getQuiz(req.params.id)
+    .then((data) => {
+      /*const { quizId, userId, date, score, questionResults } = quizResult;
+
+  return db.query(
+    'INSERT INTO results (quiz_id, user_id, date, score) VALUES ($1, $2, $3, $4) RETURNING id',
+    [quizId, userId, date, score]
+  )*/
+      console.log("data: " + data);
+      return addQuizResult({
+        quizId: req.params.id,
+        userId: 0,
+        date: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        score: req.body.score,
+        questionResults: [{ 
+          questionId: 1,
+          selectedAnswerId: 1,
+          userResponse: 'something',
+        }], 
+      })
+      .catch((error) => {
+        console.error(error);
+        // Error Handling
+        res.status(500).send('Internal Server Error');
+      });
+    })
+    .then((data) => {
+      res.redirect(`/attempt/${req.params.id}`);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Error Handling
+      res.status(500).send('Internal Server Error');
+    });
+  });
 
 
   return router;
