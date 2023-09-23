@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Click event for the "Submit Answers" button on the quiz page (quiz.ejs)
   $('#submit-answers-button').click(function() {
     //Tally user score    
-    new Promise((resolve, reject) => {
+    /*new Promise((resolve, reject) => {
       let score = 0;
       
       $('.question').forEach((question) => {
@@ -68,6 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //{ quizId, userId, date, score, questionResults }
     //db.addQuizResult()
-    window.location.href = '/results/:id';
-  });*/
+    window.location.href = '/results/:id';*/
+  });
 });
