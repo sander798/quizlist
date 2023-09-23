@@ -30,13 +30,15 @@
   <%- include("partials/_header") %>
   
   <main>
+    <% for (const quiz of quizzes) { %>
     <section class="quiz-listing">
       <div class="quiz-info-bar">
-        <a class="quiz-title" href="/">Javascript Quiz</a>
-        <span class="quiz-author">by sander798</span>
+        <a class="quiz-title" href="/<%= quiz.id %>"><%= quiz.title %></a>
+        <span class="quiz-author">by <%= quiz.author %></span>
       </div>
-      <p class="quiz-desc">Lorem ipsum</p>
+      <p class="quiz-desc"><%= quiz.description %></p>
     </section>
+  <% } %>
   </main>
 </body>
 
