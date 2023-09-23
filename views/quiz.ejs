@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Quizlist - Javascript Quiz</title>
+  <title>Quizlist - <%= quiz.title %> Quiz</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -22,16 +22,18 @@
   <%- include("partials/_header") %>
   
   <main>
-    <span id="quiz-title">Javascript Quiz</span>
-    
+    <span id="quiz-title"><%= quiz.title %></span>
+
+  <% for (const question of quiz.questions) { %>
     <section class="question">
       <div class="question-info">
-        <span class="question-title">Question 1</span>
-        <p class="question-desc">Lorem ipsum</p>
+        <span class="question-title"><%= question.title %></span>
+        <p class="question-desc"><%= question.description %></p>
       </div>
       <textarea class="user-answer"></textarea>
     </section>
-    
+    <% } %>
+
     <button type="submit" id="submit-answers-button">Submit Answers</button>
   </main>
 </body>
