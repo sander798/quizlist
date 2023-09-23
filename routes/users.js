@@ -11,9 +11,9 @@ const { getUserById, getQuizzes } = require('../db/queries/users');
 const DataHelpers = require('./attempt');
 
 // Separated Routes
-const quizRoutes = require('./users_quiz')(DataHelpers);
-const attemptRoutes = require('./attempt')(DataHelpers);
-const loginRoutes = require('./login')(DataHelpers);
+const quizRoutes = require('./routes/users_quiz')(DataHelpers);
+const attemptRoutes = require('./routes/attempt')(DataHelpers);
+const loginRoutes = require('./routes/login')(DataHelpers);
 
 module.exports = function (DataHelpers) {
   // Home page
