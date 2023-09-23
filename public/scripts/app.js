@@ -58,7 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
       resolve(score);
     })
     .then((score) => {
-      $.post(window.location.href, {score: score});
+      $.post(window.location.href, {score: score}, function(data) {
+        // Assuming data.quizId contains the ID of the quiz the user just attempted
+        window.location.href = '/quiz/' + data.quizId + '/results'; // Redirect to the results page
+      });
     });
   });
 });
