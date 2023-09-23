@@ -195,4 +195,34 @@ const getQuizResult = (quizId, userId) => {
     });
 };
 
-module.exports = { getQuizzes, addQuiz, addUser, getQuiz, getUserById, addAnswer, addQuestion, getQuizDetails, getQuizResult, addQuizResult, getQuizByName };
+// Get question answers
+const getAnswersToQuestions = (questionId) => {
+  const query = {
+    text: `
+      SELECT
+        q.text AS question_text,
+        a.text AS answer_text,
+        a.is_correct AS is_correct_answer,
+        q.quiz_id AS quiz_id,
+        q.id AS question_id
+      FROM
+        questions q
+      JOIN
+        answers a ON q.id = a.question_id
+      WHERE
+        q.id = $1;
+    `,
+    values: [questionId],
+  };
+
+  return db.query(query)
+    .then((data) => {
+      return data.rows; // Return the answers to the question.
+    })
+    .catch((error) => {
+      console.error('Error retrieving answers to question:', error);
+      return null;
+    });
+};
+
+module.exports = { getQuizzes, addQuiz, addUser, getQuiz, getUserById, addAnswer, addQuestion, getQuizDetails, getQuizResult, addQuizResult, getQuizByName, getAnswersToQuestions };
