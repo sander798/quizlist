@@ -68,4 +68,21 @@ router.get('/quiz/:quizId', (req, res) => {
     });
 });
 
+router.get('/quiz/:quizId/results', (req, res) => {
+  const quizId = req.params.quizId;
+  DataHelpers.getQuizDetails(quizId)
+    .then((quizzes) => {
+      const templateVars = {
+        userName: req.session.userName,
+        quizzes: quizzes,
+      };
+      res.render('results', templateVars); // Render the results.ejs template
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle errors here
+      res.status(500).send('Internal Server Error');
+    });
+});
+
 module.exports = router;
