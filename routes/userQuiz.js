@@ -20,7 +20,7 @@ module.exports = function (DataHelpers) {
       })
       .catch((error) => {
         console.error(error);
-        // Handle errors here
+        // error handling
         res.status(500).send('Internal Server Error');
       });
   });
@@ -65,14 +65,13 @@ router.get('/:url', (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-      // Handle errors here
+      // error handling
       res.status(500).send('Internal Server Error');
     });
 });
 
 // Fetch  list of available quizzes
 router.get('/quizzes', (req, res) => {
-  // Assuming you have a DataHelpers.getQuizzes() function
   DataHelpers.getQuizzes()
     .then((quizzes) => {
       const templateVars = {
@@ -82,7 +81,7 @@ router.get('/quizzes', (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-      // Handle errors here
+      // error handling
       res.status(500).send('Internal Server Error');
     });
 });
