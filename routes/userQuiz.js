@@ -53,9 +53,25 @@ module.exports = function (DataHelpers) {
 
   // Page to take a quiz
 router.get('/:url', (req, res) => {
-  const userId = req.session.userId;
+  const userId = 0;
+  
+  Promise.all([getUserById(userId), getQuizDetails(req.params.url)])
+    .then(([user, quiz]) => {
+      const templateVars = {
+        userName: "John Doe",
+        quiz,
+      };
+      res.render('quiz', templateVars);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Error Handling
+      res.status(500).send('Internal Server Error');
+    });
+  
+  //const userId = req.session.userId;
 
-  Promise.all([DataHelpers.getUserById(userId), DataHelpers.getQuiz({ url: req.params.url })])
+  /*Promise.all([DataHelpers.getUserById(userId), DataHelpers.getQuiz({ url: req.params.url })])
     .then(([user, quiz]) => {
       const templateVars = {
         userName: !user ? '' : user.name,
@@ -67,7 +83,7 @@ router.get('/:url', (req, res) => {
       console.error(error);
       // error handling
       res.status(500).send('Internal Server Error');
-    });
+    });*/
 });
 
 // Fetch  list of available quizzes

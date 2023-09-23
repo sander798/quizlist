@@ -29,7 +29,7 @@ app.use(express.static('public'));
 // Separated Routes
 const quizRoutes = require('./routes/users_quiz')(DataHelpers);
 const attemptRoutes = require('./routes/attempt')(DataHelpers);
-const loginRoutes = require('./routes/login')(DataHelpers);
+const loginRoutes = require('./routes/userQuiz')(DataHelpers);
 
 app.use('/quiz/new', quizRoutes);
 app.use('/attempt', attemptRoutes);

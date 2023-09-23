@@ -31,13 +31,13 @@
   
   <main>
     <% for (const quiz of quizzes) { %>
-    <section class="quiz-listing">
-      <div class="quiz-info-bar">
-        <a class="quiz-title" href="/<%= quiz.id %>"><%= quiz.title %></a>
-      </div>
-      <p class="quiz-desc"><%= quiz.description %></p>
-    </section>
-  <% } %>
+      <section class="quiz-listing">
+        <div class="quiz-info-bar">
+          <a class="quiz-title" href="/quiz/<%= quiz.id %>"><%= quiz.title %></a>
+        </div>
+        <p class="quiz-desc"><%= quiz.description %></p>
+      </section>
+    <% } %>
   </main>
 </body>
 
