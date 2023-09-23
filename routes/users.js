@@ -30,7 +30,23 @@ module.exports = function (DataHelpers) {
       })
       .catch((error) => {
         console.error(error);
-        // Handle errors here
+        // error handling
+        res.status(500).send('Internal Server Error');
+      });
+  });
+
+  // Fetch list of available quizzes
+  router.get('/quizzes', (req, res) => {
+    DataHelpers.getQuizzes()
+      .then((quizzes) => {
+        const templateVars = {
+          quizzes,
+        };
+        res.render('quiz_list', templateVars);
+      })
+      .catch((error) => {
+        console.error(error);
+        // error handling
         res.status(500).send('Internal Server Error');
       });
   });
