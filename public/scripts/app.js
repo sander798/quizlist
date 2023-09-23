@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Click event for the "Submit Answers" button on the quiz page (quiz.ejs)
-  /*$('#submit-answers-button').click(function() {
+  $('#submit-answers-button').click(function() {
     //Tally user score    
     new Promise((resolve, reject) => {
       let score = 0;
@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     //Create new result entry
+    //$.post("/quiz/result")
     
     //{ quizId, userId, date, score, questionResults }
     //db.addQuizResult()
