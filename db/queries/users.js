@@ -2,7 +2,7 @@ const db = require('../connection');
 
 // Get all public quizzes.
 const getQuizzes = () => {
-  return db.query('SELECT id, title, description FROM quizzes WHERE is_public = true;')
+  return db.query('SELECT id, title, description, user_id FROM quizzes WHERE is_public = true;')
       .then(data => {
       return data.rows;
     });
