@@ -61,6 +61,7 @@ router.get('/:url', (req, res) => {
         userName: "John Doe",
         quiz,
       };
+      console.log(templateVars.quiz);
       res.render('quiz', templateVars);
     })
     .catch((error) => {
