@@ -51,5 +51,22 @@ module.exports = function (DataHelpers) {
       });
   });
 
+router.get('/quiz', (req, res) => {
+  const quizId = 1;
+  DataHelpers.getQuizDetails(quizId)
+    .then((quizzes) => {
+      const templateVars = {
+        userName: req.session.userName, 
+        quizzes: quizzes,
+      };
+      res.render('quiz', templateVars);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle errors here
+      res.status(500).send('Internal Server Error');
+    });
+});
+
   return router;
 };
