@@ -37,7 +37,7 @@ app.use('/quiz', loginRoutes);
 
 // Home page
 app.get('/', (req, res) => {
-  const userId = req.session.userId;
+  const userId = '';
 
   Promise.all([getUserById(userId), getQuizzes()])
     .then(([user, quizzes]) => {
