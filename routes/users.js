@@ -21,10 +21,13 @@ module.exports = function (DataHelpers) {
     const userId = req.session.userId;
     const templateVars = {};
 
-    getUserById(userId)
-      .then((user) => {
-        templateVars.userName = !user ? '' : user.name;
-        res.render('index', templateVars);
+    Promise.all([getUserById(userId), getQuizzes()
+      .then(([user, quizzes]) => {
+        const templateVars = {
+          userName: !user ? '' : user.name,
+          quizzes,
+        };
+        res.render('quiz', templateVars);
       })
       .catch((error) => {
         console.error(error);
@@ -32,6 +35,5 @@ module.exports = function (DataHelpers) {
         res.status(500).send('Internal Server Error');
       });
   });
-
   return router;
 };
