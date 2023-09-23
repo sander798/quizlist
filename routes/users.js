@@ -42,7 +42,7 @@ module.exports = function (DataHelpers) {
         const templateVars = {
           quizzes,
         };
-        res.render('quiz_list', templateVars);
+        res.render('index', templateVars);
       })
       .catch((error) => {
         console.error(error);
