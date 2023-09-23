@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         title: $('#new-quiz-title-input').val(),
         description: $('#new-quiz-desc-input').val(),
         visibility: !$('#toggle-private-box').is(":checked"),
-        userId: 0,
+        userId: 1,
       },
       questions: {
         

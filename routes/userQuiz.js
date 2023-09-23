@@ -117,7 +117,7 @@ router.get('/quizzes', (req, res) => {
       console.log("data: " + data);
       return addQuizResult({
         quizId: req.params.id,
-        userId: 0,
+        userId: 1,
         date: new Date().toISOString().slice(0, 19).replace('T', ' '),
         score: req.body.score,
         questionResults: [{ 

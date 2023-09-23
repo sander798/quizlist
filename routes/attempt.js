@@ -5,7 +5,7 @@ const db = require('../db/queries/users');
 module.exports = function (DataHelpers) {
   // Single attempt page
   router.get('/:url', (req, res) => {
-    const userId = 0;
+    const userId = 1;
     const url = req.params.url;
     const templateVars = {};
 
