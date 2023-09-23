@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/result.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -21,23 +22,25 @@
   <%- include("partials/_header") %>
   
   <main>
-    <div class="quiz-banner">
+    <div id="quiz-banner">
       <span id="result-user">sander798</span>
       <span id="result-quiz-title">Javascript Quiz Results</span>
       <span id="result-date">1 / 1 / 23</span>
       <span id="result-total">1 / 2</span>
     </div>
   
-    <section>
-      <div class="answer-info">
-        <div class="answer-header">
-          <span class="question-title">Question 1</span>
-          <span class="answer-result">Correct!</span>
+    <div class="result-question-container">
+      <section class="result-question">
+        <div class="answer-info">
+          <div class="answer-header">
+            <span class="question-title">Question 1</span>
+            <span class="answer-result">Correct!</span>
+          </div>
+          <p class="question-desc">Lorem ipsum</p>
         </div>
-        <p class="question-desc">Lorem ipsum</p>
-      </div>
-      <textarea class="user-answer"></textarea>
-    </section>
+        <textarea class="user-answer"></textarea>
+      </section>
+    </div>
     
   </main>
 </body>

@@ -1,0 +1,27 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#quiz-banner {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFE57E;
+  width: 60vw;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.result-question {
+  display: flex;
+  justify-content: space-between;
+  background-color: #7CCEEE;
+  width: 60vw;
+  margin: 1.5em; 
+  padding: 1em;
+  border-radius: 25px;
+}

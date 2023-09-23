@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
         userName: !user ? '' : user.name,
         quizzes,
       };
-      res.render('quiz', templateVars);
+      res.render('index', templateVars);
     })
     .catch((error) => {
       console.error(error);

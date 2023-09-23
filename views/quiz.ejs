@@ -22,20 +22,17 @@
   <%- include("partials/_header") %>
   
   <main>
-    <% for (const quiz of quizzes) { %>
-    <section class="quiz-listing">
-      <div class="quiz-info-bar">
-        <a class="quiz-title" href="/quiz/<%= quiz.id %>"><%= quiz.title %></a>
+    <span id="quiz-title">Javascript Quiz</span>
+    
+    <section class="question">
+      <div class="question-info">
+        <span class="question-title">Question 1</span>
+        <p class="question-desc">Lorem ipsum</p>
       </div>
-      <p class="quiz-desc"><%= quiz.description %></p>
+      <textarea class="user-answer"></textarea>
     </section>
-    <% } %>
-
-    <!-- Add the form for attempting quizzes here -->
-    <form action="/attempt" method="POST">
-      <!-- Include form fields here -->
-      <button type="submit">Start Quiz</button>
-    </form>
+    
+    <button type="submit" id="submit-answers-button">Submit Answers</button>
   </main>
 </body>
 
