@@ -1,0 +1,24 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#new-quiz-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #FFE57E;
+}
+
+.new-question {
+  display: flex;
+  justify-content: space-between;
+  background-color: #7CCEEE;
+  width: 60vw;
+  margin: 1.5em; 
+  padding: 1em;
+  border-radius: 25px;
+}
+

@@ -4,15 +4,15 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <a class="navbar-brand" href="/">Quizlist</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <a id="new-quiz-link" href="/new">Create New Quiz</a>
-      <% if (false) {%>
-        <label>Logged in: <%= user.username %></label>
+      <a id="new-quiz-link" href="/quiz/new">Create New Quiz</a>
+      <% if (userName) {%>
+        <label>Logged in: <%= userName %></label>
         <form class="form-inline" action="/logout" method="POST">
-          <button type="submit" class="btn btn-primary">Logout</button>
+          <button type="submit" class="btn btn-primary" id="logout-button">Logout</button>
         </form>
       <% } else { %>
         <form class="form-inline" action="/login" method="GET">
-          <button type="submit" class="btn btn-primary">Log in</button>
+          <button type="submit" class="btn btn-primary" id="login-button">Log in</button>
           <label for="username">username:</lable>
           <input class="form-control" type="text" name="username"></input>
           <label for="username">password:</lable>

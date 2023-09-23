@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/quiz.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -24,7 +25,7 @@
     <form action="/attempt" method="POST">
       <span id="quiz-title">Javascript Quiz</span>
       
-      <section>
+      <section class="question">
         <div class="question-info">
           <span class="question-title">Question 1</span>
           <p class="question-desc">Lorem ipsum</p>
@@ -32,7 +33,7 @@
         <textarea class="user-answer"></textarea>
       </section>
       
-      <button type="submit">Submit Answers</button>
+      <button type="submit" id="submit-answers-button">Submit Answers</button>
     </form>
   </main>
 </body>

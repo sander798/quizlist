@@ -1,0 +1,36 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#quiz-title {
+  display: flex;
+  justify-content: center;
+  width: 60vw;
+  background-color: #FFE57E;
+  margin: 1.5em; 
+  padding: 1em;
+  font-size: 40;
+  font-weight: bold;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  background-color: #7CCEEE;
+  width: 60vw;
+  margin: 1.5em; 
+  padding: 1em;
+  border-radius: 25px;
+}
+
+.question-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-title {
+  font-weight: bold;
+}

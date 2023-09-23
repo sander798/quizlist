@@ -21,22 +21,30 @@
   <%- include("partials/_header") %>
   
   <main>
-    <form action="/quiz" method="POST">
-      <section id="new-quiz-header">
+    <section id="new-quiz-header">
+      <div>
         <label for="new-quiz-title">Quiz title:</label>
-        <input class="new-quiz-title-input" type="text" name="new-quiz-title"/>
-      </section>
-  
+        <input id="new-quiz-title-input" type="text" name="new-quiz-title"/>
+      </div>
+      <div>
+        <label for="new-quiz-desc">Quiz description:</label>
+        <input id="new-quiz-desc-input" type="text" name="new-quiz-desc"/>
+      </div>
+    </section>
+
+    <div class="question-container">
       <section class="new-question">
-        <div class="new-question-info">
-          <textarea class="new-question-desc">What is your question?</textarea>
-        </div>
-        <textarea class="new-question-answer">What is the answer?</textarea>
+        <textarea class="new-question-desc" value="What is your question?"></textarea>
+        <textarea class="new-question-answer" value="What is the answer?"></textarea>
       </section>
-      
-      <button type="button" id="add-question-button">Add Question</button>
-      <button type="submit">Create Quiz</button>
-    </form>
+    </div>
+    
+    <button type="button" id="add-question-button">Add Question</button>
+    
+    <input type="checkbox" name="toggle-private-box" id="toggle-private-box" value="private"></input>
+    <label for="toggle-private-box">Unlisted</label>
+    
+    <button type="button" id="create-quiz-button">Create Quiz</button>
   </main>
 </body>
 
