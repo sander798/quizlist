@@ -8,9 +8,17 @@ const getQuizzes = () => {
     });
 };
 
-// Open the quiz.
+// Open the quiz by id.
 const getQuiz = (quizId) => {
   return db.query('SELECT title, description FROM quizzes WHERE id = $1', [quizId])
+      .then(data => {
+      return data.rows;
+    });
+};
+
+// Open the quiz by name.
+const getQuizByName = (quizName) => {
+  return db.query('SELECT description FROM quizzes WHERE title = $1', [quizName])
       .then(data => {
       return data.rows;
     });
@@ -187,4 +195,4 @@ const getQuizResult = (quizId, userId) => {
     });
 };
 
-module.exports = { getQuizzes, addQuiz, addUser, getQuiz, getUserById, addAnswer, addQuestion, getQuizDetails, getQuizResult, addQuizResult };
+module.exports = { getQuizzes, addQuiz, addUser, getQuiz, getUserById, addAnswer, addQuestion, getQuizDetails, getQuizResult, addQuizResult, getQuizByName };
